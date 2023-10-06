@@ -26,10 +26,9 @@ public class VendingMachineCLI {
 				// display vending machine items
 				File itemsFile = new File("vendingmachine.csv");
 				if (itemsFile.exists()) {
-					//add code for if file exists
+
 				} else {
 					System.out.println("Vending machine inventory file not found.");
-					//add exception
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
