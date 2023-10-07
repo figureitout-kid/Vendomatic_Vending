@@ -11,11 +11,11 @@ import java.util.List;
 public class ReadVendingMachineInventory {
     public static void main(String[] args) {
         String filePath = "vendingmachine.csv";
-        List<VendingMachineItem> vendingMachineItems = readItemsFromCSV(filePath);
+        List<Items> vendingMachineItems = readItemsFromCSV(filePath);
     }
 
-    public static List<VendingMachineItem> readItemsFromCSV(String filePath) {
-        List<VendingMachineItem> items = new ArrayList<>();
+    public static List<Items> readItemsFromCSV(String filePath) {
+        List<Items> items = new ArrayList<>();
 
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -29,7 +29,7 @@ public class ReadVendingMachineInventory {
                     double price = Double.parseDouble(parts[2].trim());
                     String type = parts[3].trim();
 
-                    VendingMachineItem item = new VendingMachineItem(slotLocation, productName, price, type);
+                    Items item = new Items(slotLocation, productName, price, type);
                     items.add(item);
                 }
             }
