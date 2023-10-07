@@ -1,9 +1,9 @@
-package com.techelevator.view;
+package com.techelevator;
 
 public class Items {
     private String slotLocation;
     private String name;
-    private int price;
+    private double price;
     private ItemType type;
     private int quantity;
 
@@ -27,7 +27,7 @@ public class Items {
     }
 
     //setter, maybe change the parameters, or need to read from inventory?
-    public void Item(String slotLocation, String name, int price, ItemType type){
+    public void Item(String slotLocation, String name, double price, ItemType type){
         this.slotLocation = slotLocation;
         this.name = name;
         this.price = price;
@@ -42,7 +42,7 @@ public class Items {
     public String getName(){
         return name;
     }
-    public int getPrice(){
+    public double getPrice(){
         return price;
     }
     public ItemType getType(){
