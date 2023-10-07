@@ -6,6 +6,7 @@ public class Items {
     private double price;
     private ItemType type;
     private int quantity;
+    private int MAX_QUANTITY = 5;
 
 
     // trying enum here, but this could potentially
@@ -87,7 +88,12 @@ public class Items {
                 ", Type: " + type +
                 ", Quantity: " + quantity;
     }
+
+    public void restock() {
+        quantity = MAX_QUANTITY;
+    }
 }
+
 
 
 // somewhere we need to read the vending machine inventory, and

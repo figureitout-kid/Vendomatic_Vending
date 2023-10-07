@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7edc89-fe7a-418a-9bc7-3ae2ef0b959a" name="Changes" comment="Exit functionality added &amp; read from inventory file class begun">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/ReadVendingMachineInventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/ReadVendingMachineInventory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/VendingMachineItem.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Merging master",
     "last_opened_file_path": "C:/Users/Administrator/Desktop/meritamerica/Tech_Elevator_Repos/Module1Capstone/module-1-capstone",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
