@@ -6,6 +6,7 @@ public class Items {
     private double price;
     private ItemType type;
     private int quantity;
+    private int MAX_QUANTITY = 5;
 
     // trying enum here, but this could potentially
     // be an interface, method getMessage()
@@ -66,6 +67,10 @@ public class Items {
         if (quantity == 0){
             System.out.println( "SORRY " + name + " IS SOLD OUT");
         }
+    }
+
+    public void restock(){
+        quantity = MAX_QUANTITY;
     }
 
 }
