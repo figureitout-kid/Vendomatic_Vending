@@ -7,6 +7,8 @@ public class Items {
     private ItemType type;
     private int quantity;
 
+
+
     // trying enum here, but this could potentially
     // be an interface, method getMessage()
     public enum ItemType {
@@ -35,6 +37,13 @@ public class Items {
         this.quantity = 5;
     }
 
+    public Items(String slotLocation, String name, double price, ItemType type) {
+        this.slotLocation = slotLocation;
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
+
     //getters
     public String getSlotLocation() {
         return slotLocation;
@@ -42,6 +51,7 @@ public class Items {
     public String getName(){
         return name;
     }
+
     public double getPrice(){
         return price;
     }

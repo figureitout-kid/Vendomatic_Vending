@@ -1,12 +1,11 @@
 package com.techelevator;
 
-import com.techelevator.view.VendingMachineItem;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ReadVendingMachineInventory {
     public static void main(String[] args) {
@@ -29,8 +28,7 @@ public class ReadVendingMachineInventory {
                     double price = Double.parseDouble(parts[2].trim());
                     String type = parts[3].trim();
 
-                    Items item = new Items(slotLocation, productName, price, type);
-                    items.add(item);
+                    Items item = new Items(slotLocation, productName, price, Items.ItemType.valueOf(type.toUpperCase()));
                 }
             }
         } catch (IOException e) {

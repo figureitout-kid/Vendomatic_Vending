@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9b7edc89-fe7a-418a-9bc7-3ae2ef0b959a" name="Changes" comment="Exit functionality added &amp; read from inventory file class begun">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/view/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +40,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/Administrator/Desktop/meritamerica/Tech_Elevator_Repos/Module1Capstone/module-1-capstone",
     "project.structure.last.edited": "Project",
@@ -48,6 +49,11 @@
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.techelevator" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
