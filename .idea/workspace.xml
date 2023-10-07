@@ -8,6 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Items.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/ReadVendingMachineInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/ReadVendingMachineInventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/ReadVendingMachineInventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/VendingMachineItem.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +60,21 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="VendingMachineCLI" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.techelevator.VendingMachineCLI" />
+      <module name="m01-capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.techelevator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />

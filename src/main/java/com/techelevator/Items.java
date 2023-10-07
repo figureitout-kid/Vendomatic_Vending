@@ -8,14 +8,13 @@ public class Items {
     private int quantity;
 
 
-
     // trying enum here, but this could potentially
     // be an interface, method getMessage()
     public enum ItemType {
-        CHIP ("Crunch Crunch, Yum!"),
-        CANDY ("Munch Munch, Yum!"),
-        DRINK ("Glug Glug, Yum!"),
-        GUM ("Chew Chew, Yum!");
+        CHIP("Crunch Crunch, Yum!"),
+        CANDY("Munch Munch, Yum!"),
+        DRINK("Glug Glug, Yum!"),
+        GUM("Chew Chew, Yum!");
 
         private final String message;
 
@@ -29,7 +28,7 @@ public class Items {
     }
 
     //setter, maybe change the parameters, or need to read from inventory?
-    public void Item(String slotLocation, String name, double price, ItemType type){
+    public void Items(String slotLocation, String name, double price, ItemType type) {
         this.slotLocation = slotLocation;
         this.name = name;
         this.price = price;
@@ -48,17 +47,20 @@ public class Items {
     public String getSlotLocation() {
         return slotLocation;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
-    public ItemType getType(){
+
+    public ItemType getType() {
         return type;
     }
-    public int getQuantity(){
+
+    public int getQuantity() {
         return quantity;
     }
 
@@ -67,18 +69,26 @@ public class Items {
     //may need to change dispense to include/tie in item instead of using type, depending on vending machine code?
     public void dispense() {
         if (quantity > 0) {
-            quantity --;
+            quantity--;
             System.out.println(type.getMessage());
             //* should we add a log step here??????*//
         }
     }
-    public String isSoldOut(){
-        if (quantity == 0){
-            System.out.println( "SORRY " + name + " IS SOLD OUT");
-        }
+
+    public boolean isSoldOut() {
+        return quantity == 0;
     }
 
+    //toString method to properly print Vending Machine Items from Menu Option 1
+    public String toString() {
+        return "Slot: " + slotLocation +
+                ", Name: " + name +
+                ", Price: $" + price +
+                ", Type: " + type +
+                ", Quantity: " + quantity;
+    }
 }
+
 
 // somewhere we need to read the vending machine inventory, and
 // give information on items location/name/price/itemtype

@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ReadVendingMachineInventory {
     public static void main(String[] args) {
@@ -28,7 +27,9 @@ public class ReadVendingMachineInventory {
                     double price = Double.parseDouble(parts[2].trim());
                     String type = parts[3].trim();
 
+                    // Create an Items object and add it to the list
                     Items item = new Items(slotLocation, productName, price, Items.ItemType.valueOf(type.toUpperCase()));
+                    items.add(item);
                 }
             }
         } catch (IOException e) {
