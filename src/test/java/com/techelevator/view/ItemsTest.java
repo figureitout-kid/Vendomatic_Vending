@@ -37,4 +37,14 @@ public class ItemsTest {
 
         assertTrue(item.isSoldOut());
     }
+    @Test
+    public void canBeRestockedToMax(){
+        //dispense four items and restock to max quantity
+        item.dispense();
+        item.dispense();
+        item.dispense();
+        item.dispense();
+        item.restock();
+        assertEquals(5, item.getQuantity());
+    }
 }

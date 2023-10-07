@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b7edc89-fe7a-418a-9bc7-3ae2ef0b959a" name="Changes" comment="Exit functionality added &amp; read from inventory file class begun">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterDir="false" />
-    </list>
+    <list default="true" id="9b7edc89-fe7a-418a-9bc7-3ae2ef0b959a" name="Changes" comment="Exit functionality added &amp; read from inventory file class begun" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,25 +32,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/meritamerica/Tech_Elevator_Repos/Module1Capstone/module-1-capstone",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/meritamerica/Tech_Elevator_Repos/Module1Capstone/module-1-capstone&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.techelevator" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.VendingMachineCLI">
+  <component name="RunManager" selected="JUnit.ItemsTest.canBeRestockedToMax">
     <configuration name="VendingMachineCLI" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -86,6 +81,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ItemsTest.canBeRestockedToMax" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="m01-capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.techelevator.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.techelevator.view" />
+      <option name="MAIN_CLASS_NAME" value="com.techelevator.view.ItemsTest" />
+      <option name="METHOD_NAME" value="canBeRestockedToMax" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -99,6 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ItemsTest.canBeRestockedToMax" />
         <item itemvalue="JUnit.ItemsTest" />
       </list>
     </recent_temporary>
