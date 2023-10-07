@@ -8,6 +8,14 @@ public class Items {
     private int quantity;
     private int MAX_QUANTITY = 5;
 
+    public Items(String slotLocation, String productName, double price, ItemType type, int quantity) {
+        this.slotLocation = slotLocation;
+        this.name = name;
+        this.price = price;
+        this.type = type;
+        this.quantity = quantity;
+    }
+
 
     // trying enum here, but this could potentially
     // be an interface, method getMessage()
@@ -29,20 +37,7 @@ public class Items {
     }
 
     //setter, maybe change the parameters, or need to read from inventory?
-    public void Items(String slotLocation, String name, double price, ItemType type) {
-        this.slotLocation = slotLocation;
-        this.name = name;
-        this.price = price;
-        this.type = type;
-        this.quantity = 5;
-    }
 
-    public Items(String slotLocation, String name, double price, ItemType type) {
-        this.slotLocation = slotLocation;
-        this.name = name;
-        this.price = price;
-        this.type = type;
-    }
 
     //getters
     public String getSlotLocation() {

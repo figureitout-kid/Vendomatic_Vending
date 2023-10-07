@@ -26,9 +26,9 @@ public class ReadVendingMachineInventory {
                     String productName = parts[1].trim();
                     double price = Double.parseDouble(parts[2].trim());
                     String type = parts[3].trim();
+                    int quantity = 5; // Initialize the quantity to 5
 
-                    // Create an Items object and add it to the list
-                    Items item = new Items(slotLocation, productName, price, Items.ItemType.valueOf(type.toUpperCase()));
+                    Items item = new Items(slotLocation, productName, price, Items.ItemType.valueOf(type.toUpperCase()), quantity);
                     items.add(item);
                 }
             }
