@@ -2,7 +2,6 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
-import java.io.File;
 import java.util.List;
 
 
@@ -42,6 +41,7 @@ public class VendingMachineCLI {
 			System.out.println(item.toString());
 		}
 	}
+
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
