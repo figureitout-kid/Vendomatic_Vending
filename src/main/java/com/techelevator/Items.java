@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Items {
     private String slotLocation;
-    private String name;
+    private String productName;
     private double price;
     private ItemType type;
     private int quantity;
@@ -29,17 +29,17 @@ public class Items {
     }
 
     //setter, maybe change the parameters, or need to read from inventory?
-    public void Items(String slotLocation, String name, double price, ItemType type) {
+    public void Items(String slotLocation, String productName, double price, ItemType type) {
         this.slotLocation = slotLocation;
-        this.name = name;
+        this.productName = productName;
         this.price = price;
         this.type = type;
         this.quantity = 5;
     }
 
-    public Items(String slotLocation, String name, double price, ItemType type) {
+    public Items(String slotLocation, String productName, double price, ItemType type) {
         this.slotLocation = slotLocation;
-        this.name = name;
+        this.productName = productName;
         this.price = price;
         this.type = type;
     }
@@ -49,8 +49,8 @@ public class Items {
         return slotLocation;
     }
 
-    public String getName() {
-        return name;
+    public String getproductName() {
+        return productName;
     }
 
     public double getPrice() {
@@ -83,7 +83,7 @@ public class Items {
     //toString method to properly print Vending Machine Items from Menu Option 1
     public String toString() {
         return "Slot: " + slotLocation +
-                ", Name: " + name +
+                ", Name: " + productName +
                 ", Price: $" + price +
                 ", Type: " + type +
                 ", Quantity: " + quantity;
