@@ -43,10 +43,10 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/Administrator/Desktop/meritamerica/Tech_Elevator_Repos/Module1Capstone/module-1-capstone",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -57,7 +57,6 @@
   <component name="RunManager" selected="Application.VendingMachineCLI">
     <configuration name="VendingMachineCLI" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-11" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.techelevator.VendingMachineCLI" />
       <module name="m01-capstone" />
       <extension name="coverage">
@@ -101,6 +100,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MenuTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="m01-capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.techelevator.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.techelevator.view" />
+      <option name="MAIN_CLASS_NAME" value="com.techelevator.view.MenuTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -112,10 +126,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.VendingMachineCLI" />
+      <item itemvalue="JUnit.ItemsTest" />
+      <item itemvalue="JUnit.ItemsTest.canBeRestockedToMax" />
+      <item itemvalue="JUnit.MenuTest" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ItemsTest.canBeRestockedToMax" />
+        <item itemvalue="JUnit.MenuTest" />
         <item itemvalue="JUnit.ItemsTest" />
+        <item itemvalue="JUnit.ItemsTest.canBeRestockedToMax" />
       </list>
     </recent_temporary>
   </component>

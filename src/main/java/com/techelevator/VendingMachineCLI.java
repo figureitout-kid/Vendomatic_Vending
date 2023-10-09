@@ -2,7 +2,9 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class VendingMachineCLI {
@@ -18,10 +20,14 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 	private List<Items> vendingMachineItems;
+	private Map<String, Items> itemLocator = new HashMap<>();
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		this.vendingMachineItems = ReadVendingMachineInventory.readItemsFromCSV("vendingmachine.csv");
+		for (Items item : vendingMachineItems) {
+			itemLocator.put(item.getSlotLocation(), item);
+		}
 	}
 
 	public void run() {
