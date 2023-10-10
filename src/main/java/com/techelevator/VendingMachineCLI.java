@@ -121,6 +121,8 @@ public class VendingMachineCLI {
 
 				if (insertedBill == 1 || insertedBill == 2 || insertedBill == 5 || insertedBill == 10){
 					balance += insertedBill;
+					//log the deposit
+					PurchaseLogger.logDeposit(insertedBill, balance);
 					System.out.println("Current Money Provided: $" + balance);
 				}
 				else {
@@ -164,8 +166,13 @@ public class VendingMachineCLI {
 
 		//subtract amount of snack from balance
 		balance -= snackSelection.getPrice();
+
 		//print item name, cost, and remaining balance
 		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + balance);
+
+		//log purchase
+		PurchaseLogger.logPurchase(snackSelection, balance);
+
 		//dispense snack and show message, return to Purchase menu
 		snackSelection.dispense();
 	}
@@ -176,6 +183,7 @@ public class VendingMachineCLI {
 	//convert dollar amount to actual change amount, then reduce balance by using modulo to find remainder
 	//braxton- if you want me to walk this out, it hurt my brain
 	private void finishTransaction(){
+		double originalBalance = balance;
 		int quarters = 0;
 		int dimes = 0;
 		int nickels = 0;
@@ -206,6 +214,8 @@ public class VendingMachineCLI {
 		if (nickels == 1) {System.out.println (nickels + " Nickel");}
 		if (nickels > 1) {System.out.println (nickels + " Nickels");}
 
+		//log the change given
+		PurchaseLogger.logGiveChange(originalBalance, 0);
 
 		balance = 0.0;
 
