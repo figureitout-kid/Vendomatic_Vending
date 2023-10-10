@@ -70,12 +70,23 @@ public class VendingMachineCLI {
 
 			switch (purchaseChoice){
 				case PURCHASE_MENU_OPTION_FEED_MONEY:
-					feedMoney();
+//					feedMoney(); to do****************************************
 					break;
 					//ensure that the display shows of 'Current Money Provided'
+				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
+//					selectProduct(); to do****************************************
+					// grabs the product from slot location, dispenses, and then returns to PurchaseMenu
+					// adds to log
+					break;
+				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
+//					finishTransaction(); /* to do****************************************
+					// returns change using as few coins possible
+					// updates current balance to 0;
+					break;
+				default:
+					System.out.println("Invalid choice. Please try again.");
+					break;
 			}
-
-
 		}
 	}
 //			String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
