@@ -37,18 +37,26 @@ public class VendingMachineCLI {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
-			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items
-				displayVendingMachineItems();
-			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				// do purchase
-				purchaseMenu();
-			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
-				System.out.println("Thank you for using this vending machine. Have a nice day...");
-				System.exit(0);
+			switch (choice) {
+				case MAIN_MENU_OPTION_DISPLAY_ITEMS:
+					displayVendingMachineItems();
+					break;
+				case MAIN_MENU_OPTION_PURCHASE:
+					purchaseMenu();
+					break;
+				case MAIN_MENU_OPTION_EXIT:
+					System.out.println("Thank you for using this vending machine. Have a nice day...");
+					// do we need to add logic here to restock the entire vending machine?- we would need to iterate through all items?
+					System.exit(0);
+					break;
+					// if user doesn't select 1-3
+				default:
+					System.out.println("Invalid choice. Please try again.");
+					break;
 			}
 		}
 	}
+
 
 	private void displayVendingMachineItems() {
 		for (Items item : vendingMachineItems) {
@@ -57,26 +65,37 @@ public class VendingMachineCLI {
 	}
 
 	private void purchaseMenu() {
-		while(true) {
+		while (true) {
 			String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
-			if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-				//implement logic for feeding money
-			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
-				//implement logic for selecting and purchasing a product
-			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-				//implement logic for finishing the transaction
-				return;
+			switch (purchaseChoice){
+				case PURCHASE_MENU_OPTION_FEED_MONEY:
+					feedMoney();
+					break;
+					//ensure that the display shows of 'Current Money Provided'
 			}
+
+
 		}
 	}
+//			String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+//
+//			if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
+//				//implement logic for feeding money
+//			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
+//				//implement logic for selecting and purchasing a product
+//			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+//				//implement logic for finishing the transaction
+//				return;
+//			}
+
+
 
 
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 
-		System.out.println(cli.itemGrabber("A1"));
 		cli.run();
 	}
 
