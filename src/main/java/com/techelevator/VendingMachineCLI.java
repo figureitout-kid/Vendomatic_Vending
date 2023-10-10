@@ -78,14 +78,15 @@ public class VendingMachineCLI {
 
 				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
 					// grabs the product from slot location, dispenses, and then returns to PurchaseMenu
-					// adds to log after selecting *************************************************************** to do
 					selectProduct();
+					// adds to log after selecting *************************************************************** to do
 					break;
 				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
-//					finishTransaction(); /* to do****************************************
 					// returns change using as few coins possible
 					// updates current balance to 0;
-					break;
+					finishTransaction();
+					// adds to log after selecting *************************************************************** to do
+					return;
 				default:
 					System.out.println("Invalid choice. Please try again.");
 					break;
@@ -107,8 +108,8 @@ public class VendingMachineCLI {
 		boolean continueFeeding = true;
 
 		while (continueFeeding) {
-			System.out.println("Enter the dollar amount you want to feed (1, 2, 5, 10) or type 'done' to go back: ");
-			String input = menu.getInput();
+			System.out.println("Enter the dollar amount you want to feed (1, 2, 5, 10) or type 'done' to purchase: ");
+			String input = menu.getInput().trim();
 
 			if (input.equalsIgnoreCase("done")) {
 				continueFeeding = false;
@@ -137,7 +138,7 @@ public class VendingMachineCLI {
 		displayVendingMachineItems();
 		System.out.print("Enter the slot location of the item you'd like to purchase: ");
 		// save input for location-- possibly need to change var name?
-		String slotLocation = menu.getInput().toUpperCase();
+		String slotLocation = menu.getInput().toUpperCase().trim();
 
 		//ensure input is a legitimate slot location
 		if (!itemLocator.containsKey(slotLocation)) {
@@ -169,8 +170,45 @@ public class VendingMachineCLI {
 		snackSelection.dispense();
 	}
 
+	//finish transaction option-- return change in least amount of change using quarters, dimes, nickels, print change amount
+	//return balance to zero, return to main menu
 
+	//convert dollar amount to actual change amount, then reduce balance by using modulo to find remainder
+	//braxton- if you want me to walk this out, it hurt my brain
+	private void finishTransaction(){
+		int quarters = 0;
+		int dimes = 0;
+		int nickels = 0;
+
+		//convert balance to exact change amount
+		int changeDue = (int) (balance * 100);
+
+		//start with quarters first
+		quarters = changeDue / 25;
+		changeDue %= 25;
+
+		//dimes
+		dimes = changeDue / 10;
+		changeDue %= 10;
+
+		//nickels
+		nickels = changeDue / 5;
+
+		System.out.println("Your change is:");
+
+
+		if (quarters == 1) {System.out.println (quarters + " Quarter");}
+		if (quarters > 1) {System.out.println (quarters + " Quarters");}
+
+		if (dimes == 1) {System.out.println (dimes + " Dime");}
+		if (dimes > 1) {System.out.println (dimes + " Dimes");}
+
+		if (nickels == 1) {System.out.println (nickels + " Nickel");}
+		if (nickels > 1) {System.out.println (nickels + " Nickels");}
+
+
+		balance = 0.0;
+
+		System.out.println("Thank you for using this vending machine. Enjoy!");
+	}
 }
-
-// should we have an option to go back one more menu, in the example of not having enough money and wanting to add more, can they?
-// we also need to see if someone can buy more than one of the same thing, and ensure the balance is correct after one purchase
