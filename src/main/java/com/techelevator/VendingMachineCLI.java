@@ -21,7 +21,7 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private List<Items> vendingMachineItems;
 	private Map<String, Items> itemLocator = new HashMap<>();
-	private int balance;
+	private double balance;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -72,13 +72,14 @@ public class VendingMachineCLI {
 
 			switch (purchaseChoice){
 				case PURCHASE_MENU_OPTION_FEED_MONEY:
+					//allows user to feed money into machine in whole dollar amounts, returns 'current money provided'
 					feedMoney();
 					break;
-					//ensure that the display shows of 'Current Money Provided'
+
 				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
-//					selectProduct(); to do****************************************
 					// grabs the product from slot location, dispenses, and then returns to PurchaseMenu
-					// adds to log
+					// adds to log after selecting *************************************************************** to do
+					selectProduct();
 					break;
 				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
 //					finishTransaction(); /* to do****************************************
@@ -98,15 +99,6 @@ public class VendingMachineCLI {
 		cli.run();
 	}
 
-	//organizing items into hashmap to grab the itemName w/ slotLocation
-	public String itemGrabber(String slotLocation){
-		Items snackSelection = itemLocator.get(slotLocation);
-
-		if(snackSelection == null) {
-			return "Item not found for slot: " + slotLocation;
-		}
-		return snackSelection.getproductName();
-	}
 
 
 //methods left to implement and call in the purchase menu
@@ -115,10 +107,10 @@ public class VendingMachineCLI {
 		boolean continueFeeding = true;
 
 		while (continueFeeding) {
-			System.out.println("Enter the dollar amount you want to feed (1, 2, 5, 10) or type 'exit' to go back: ");
+			System.out.println("Enter the dollar amount you want to feed (1, 2, 5, 10) or type 'done' to go back: ");
 			String input = menu.getInput();
 
-			if (input.equalsIgnoreCase("exit")) {
+			if (input.equalsIgnoreCase("done")) {
 				continueFeeding = false;
 				break;
 			}
@@ -137,12 +129,48 @@ public class VendingMachineCLI {
 			catch (NumberFormatException e) {
 				System.out.println("Please enter a valid dollar amount.");
 			}
+		}
+	}
 
+
+	private void selectProduct() {
+		displayVendingMachineItems();
+		System.out.print("Enter the slot location of the item you'd like to purchase: ");
+		// save input for location-- possibly need to change var name?
+		String slotLocation = menu.getInput().toUpperCase();
+
+		//ensure input is a legitimate slot location
+		if (!itemLocator.containsKey(slotLocation)) {
+			System.out.println("Invalid slot location. Pleas try again.");
+			return;
+		}
+		//***may have discrepancy w/ Items vs String?????????????????????????????????????????????
+		//grab name of the item and save as snack variable, by hashmap itemlocator
+		Items snackSelection = itemLocator.get(slotLocation);
+
+		// check if sold out
+		if (snackSelection.isSoldOut()) {
+			System.out.println("Sorry, " + snackSelection + " is sold out. Please make another selection.");
+			// go back to Purchase menu
+			return;
 		}
 
-		System.out.println("Please insert money:");
+		//ensure user has enough money
+		if (balance < snackSelection.getPrice()){
+			System.out.println("Oh no! You don't have enough money- please add more or select a different item.");
+			return;
+		}
 
+		//subtract amount of snack from balance
+		balance -= snackSelection.getPrice();
+		//print item name, cost, and remaining balance
+		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + balance);
+		//dispense snack and show message, return to Purchase menu
+		snackSelection.dispense();
 	}
 
 
 }
+
+// should we have an option to go back one more menu, in the example of not having enough money and wanting to add more, can they?
+// we also need to see if someone can buy more than one of the same thing, and ensure the balance is correct after one purchase

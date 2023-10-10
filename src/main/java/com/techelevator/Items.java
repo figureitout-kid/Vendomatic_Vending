@@ -68,7 +68,6 @@ public class Items {
         if (quantity > 0) {
             quantity--;
             System.out.println(type.getMessage());
-            //* should we add a log step here??????*//
         }
     }
 
