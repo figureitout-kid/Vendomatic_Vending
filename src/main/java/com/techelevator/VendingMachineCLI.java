@@ -25,10 +25,13 @@ public class VendingMachineCLI {
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		this.vendingMachineItems = ReadVendingMachineInventory.readItemsFromCSV("vendingmachine.csv");
+		this.itemLocator = new HashMap<>();
+
 		for (Items item : vendingMachineItems) {
 			itemLocator.put(item.getSlotLocation(), item);
 		}
 	}
+
 
 	public void run() {
 		while (true) {
@@ -72,6 +75,21 @@ public class VendingMachineCLI {
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
+
+		System.out.println(cli.itemGrabber("A1"));
 		cli.run();
 	}
+
+	//checking the hashmap ability to locate an item
+	public String itemGrabber(String slotLocation){
+		Items snackSelection = itemLocator.get(slotLocation);
+
+		if(snackSelection == null) {
+			return "Item not found for slot: " + slotLocation;
+		}
+		return snackSelection.getproductName();
+	}
+
+
+
 }
