@@ -21,11 +21,13 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private List<Items> vendingMachineItems;
 	private Map<String, Items> itemLocator = new HashMap<>();
+	private int balance;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 		this.vendingMachineItems = ReadVendingMachineInventory.readItemsFromCSV("vendingmachine.csv");
 		this.itemLocator = new HashMap<>();
+		this.balance = 0;
 
 		for (Items item : vendingMachineItems) {
 			itemLocator.put(item.getSlotLocation(), item);
@@ -70,7 +72,7 @@ public class VendingMachineCLI {
 
 			switch (purchaseChoice){
 				case PURCHASE_MENU_OPTION_FEED_MONEY:
-//					feedMoney(); to do****************************************
+					feedMoney();
 					break;
 					//ensure that the display shows of 'Current Money Provided'
 				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
@@ -89,20 +91,6 @@ public class VendingMachineCLI {
 			}
 		}
 	}
-//			String purchaseChoice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
-//
-//			if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-//				//implement logic for feeding money
-//			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
-//				//implement logic for selecting and purchasing a product
-//			} else if (purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
-//				//implement logic for finishing the transaction
-//				return;
-//			}
-
-
-
-
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
@@ -110,7 +98,7 @@ public class VendingMachineCLI {
 		cli.run();
 	}
 
-	//checking the hashmap ability to locate an item
+	//organizing items into hashmap to grab the itemName w/ slotLocation
 	public String itemGrabber(String slotLocation){
 		Items snackSelection = itemLocator.get(slotLocation);
 
@@ -120,6 +108,41 @@ public class VendingMachineCLI {
 		return snackSelection.getproductName();
 	}
 
+
+//methods left to implement and call in the purchase menu
+
+	private void feedMoney() {
+		boolean continueFeeding = true;
+
+		while (continueFeeding) {
+			System.out.println("Enter the dollar amount you want to feed (1, 2, 5, 10) or type 'exit' to go back: ");
+			String input = menu.getInput();
+
+			if (input.equalsIgnoreCase("exit")) {
+				continueFeeding = false;
+				break;
+			}
+
+			try {
+				int insertedBill = Integer.parseInt(input);
+
+				if (insertedBill == 1 || insertedBill == 2 || insertedBill == 5 || insertedBill == 10){
+					balance += insertedBill;
+					System.out.println("Current Money Provided: $" + balance);
+				}
+				else {
+					System.out.println("Invalid currency. Your money is no good here.");
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Please enter a valid dollar amount.");
+			}
+
+		}
+
+		System.out.println("Please insert money:");
+
+	}
 
 
 }
