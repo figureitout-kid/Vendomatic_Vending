@@ -7,16 +7,18 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PurchaseLogger {
+public class TransactionLogger {
 
     private static final String LOG_FILE_PATH = "Log.txt";
 
     public static void logDeposit(double amount, double newBalance) {
-        String logMessage;
+        String logMessage = getFormattedLogMessage("FEED MONEY", amount, newBalance);
+        logToFile(logMessage);
     }
 
     public static void logPurchase(Items item, double newBalance) {
-        String logMessage;
+        String logMessage = getFormattedLogMessage(item, newBalance);
+        logToFile(logMessage);
     }
 
     public static void logGiveChange(double changeAmount, double newBalance) {

@@ -117,15 +117,14 @@ public class VendingMachineCLI {
 			}
 
 			try {
-				int insertedBill = Integer.parseInt(input);
+				double insertedBill = Double.parseDouble(input);
 
 				if (insertedBill == 1 || insertedBill == 2 || insertedBill == 5 || insertedBill == 10){
 					balance += insertedBill;
 					//log the deposit
-					PurchaseLogger.logDeposit(insertedBill, balance);
-					System.out.println("Current Money Provided: $" + balance);
-				}
-				else {
+					TransactionLogger.logDeposit(insertedBill, balance);
+					System.out.println("Current Money Provided: $" + String.format("%.2f", balance));
+				} else {
 					System.out.println("Invalid currency. Your money is no good here.");
 				}
 			}
@@ -171,7 +170,7 @@ public class VendingMachineCLI {
 		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + balance);
 
 		//log purchase
-		PurchaseLogger.logPurchase(snackSelection, balance);
+		TransactionLogger.logPurchase(snackSelection, balance);
 
 		//dispense snack and show message, return to Purchase menu
 		snackSelection.dispense();
@@ -215,7 +214,7 @@ public class VendingMachineCLI {
 		if (nickels > 1) {System.out.println (nickels + " Nickels");}
 
 		//log the change given
-		PurchaseLogger.logGiveChange(originalBalance, 0);
+		TransactionLogger.logGiveChange(originalBalance, 0);
 
 		balance = 0.0;
 
