@@ -79,13 +79,11 @@ public class VendingMachineCLI {
 				case PURCHASE_MENU_OPTION_SELECT_PRODUCT:
 					// grabs the product from slot location, dispenses, and then returns to PurchaseMenu
 					selectProduct();
-					// adds to log after selecting *************************************************************** to do
 					break;
 				case PURCHASE_MENU_OPTION_FINISH_TRANSACTION:
 					// returns change using as few coins possible
 					// updates current balance to 0;
 					finishTransaction();
-					// adds to log after selecting *************************************************************** to do
 					return;
 				default:
 					System.out.println("Invalid choice. Please try again.");
