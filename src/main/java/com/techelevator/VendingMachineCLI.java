@@ -2,6 +2,10 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +16,10 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+	private static final String MAIN_MENU_OPTION_TECHNICIAN_LOGIN = "Technician Login";
+	private static final String[] MAIN_MENU_OPTIONS_USER = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_TECHNICIAN_LOGIN};
+	private static final String[] MAIN_MENU_OPTIONS_TECHNICIAN = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT};
 	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
@@ -21,6 +28,8 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private List<Items> vendingMachineItems;
 	private Map<String, Items> itemLocator = new HashMap<>();
+	private boolean enableTechnicianMode = false;
+	private static final String TECHNICIAN_PASSWORD = "4";
 	private double balance;
 
 	public VendingMachineCLI(Menu menu) {
@@ -36,33 +45,90 @@ public class VendingMachineCLI {
 
 
 	public void run() {
-		while (true) {
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
-			switch (choice) {
-				case MAIN_MENU_OPTION_DISPLAY_ITEMS:
-					displayVendingMachineItems();
-					break;
-				case MAIN_MENU_OPTION_PURCHASE:
-					purchaseMenu();
-					break;
-				case MAIN_MENU_OPTION_EXIT:
-					System.out.println("Thank you for using this vending machine. Have a nice day...");
-					// do we need to add logic here to restock the entire vending machine?- we would need to iterate through all items?
-					System.exit(0);
+		while (true) {
+            String choice;
+
+            if (enableTechnicianMode) {
+                //Technician menu
+				choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS_TECHNICIAN);
+            } else {
+				//User menu
+                choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS_USER);
+            }
+
+
+            switch (choice) {
+                case MAIN_MENU_OPTION_DISPLAY_ITEMS:
+                    displayVendingMachineItems();
+                    break;
+                case MAIN_MENU_OPTION_PURCHASE:
+                    purchaseMenu();
+                    break;
+                case MAIN_MENU_OPTION_EXIT:
+                    System.out.println("Thank you for using this vending machine. Have a nice day...");
+                    // do we need to add logic here to restock the entire vending machine?- we would need to iterate through all items?
+                    System.exit(0);
+                    break;
+                case MAIN_MENU_OPTION_SALES_REPORT:
+					if (enableTechnicianMode) {
+						generateSalesReport();
+					} else {
+						System.out.println("Invalid choice. Please try again.");
+					}
+                    break;
+				case MAIN_MENU_OPTION_TECHNICIAN_LOGIN:
+					if(isTechnicianMode()) {
+						enableTechnicianMode = true;
+					} else {
+						System.out.println("Invalid choice. Please try again.");
+					}
 					break;
 					// if user doesn't select 1-3
-				default:
-					System.out.println("Invalid choice. Please try again.");
-					break;
-			}
-		}
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
 	}
 
 
 	private void displayVendingMachineItems() {
 		for (Items item : vendingMachineItems) {
 			System.out.println(item.toString());
+		}
+	}
+
+	private boolean isTechnicianMode() {
+		System.out.print("Enter Technician password: ");
+		String password = menu.getInput().trim();
+		return "4".equals(password);
+	}
+
+	private void generateSalesReport() {
+		double totalSales = 0;
+
+		for (Items item : vendingMachineItems) {
+			totalSales += item.getQuantitySold() * item.getPrice();
+		}
+
+		//Create a unique filename
+		String timestamp =  new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		String fileName = "SalesReport_" + timestamp + ".txt";
+
+		try (PrintWriter writer = new PrintWriter(fileName)) {
+			for (Items item : vendingMachineItems) {
+				writer.println(item.getproductName() + "|" + item.getQuantitySold());
+			}
+
+			writer.println();
+
+			//Print total sales
+			writer.println("TOTAL SALES $" + String.format("%.2f", totalSales));
+
+			System.out.println("Sales report has been generated: " + fileName);
+		} catch (FileNotFoundException e) {
+			System.out.println("Error generating the sales report: " + e.getMessage());
 		}
 	}
 
@@ -162,6 +228,9 @@ public class VendingMachineCLI {
 			System.out.println("Oh no! You don't have enough money- please add more or select a different item.");
 			return;
 		}
+
+		//increment quantitySold for the selected product
+		snackSelection.incrementQuantitySold();
 
 		//subtract amount of snack from balance
 		balance -= snackSelection.getPrice();

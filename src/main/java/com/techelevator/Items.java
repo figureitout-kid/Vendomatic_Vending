@@ -6,6 +6,7 @@ public class Items {
     private double price;
     private ItemType type;
     private int quantity;
+    private int quantitySold;
     private int MAX_QUANTITY = 5;
 
     //setter, maybe change the parameters, or need to read from inventory?
@@ -16,6 +17,7 @@ public class Items {
         this.type = type;
         this.quantity = quantity;
     }
+
 
 
     // trying enum here, but this could potentially
@@ -61,6 +63,8 @@ public class Items {
         return quantity;
     }
 
+    public int getQuantitySold() {return quantitySold;}
+
     //methods
 
     //may need to change dispense to include/tie in item instead of using type, depending on vending machine code?
@@ -86,6 +90,10 @@ public class Items {
 
     public void restock() {
         quantity = MAX_QUANTITY;
+    }
+
+    public void incrementQuantitySold() {
+        this.quantitySold++;
     }
 }
 
