@@ -231,12 +231,13 @@ public class VendingMachineCLI {
 
 		//subtract amount of snack from balance
 		balance -= snackSelection.getPrice();
+
 		//testing this to address the missing 0 in the hundreds place
-		DecimalFormat balanceWithTwoDecimals = new DecimalFormat("#0.00");
-		String properDecimalBalance = balanceWithTwoDecimals.format(balance);
+		DecimalFormat currency = new DecimalFormat("#0.00");
+		String properDecimalBalance = currency.format(balance);
 
 		//print item name, cost, and remaining balance
-		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + properDecimalBalance);
+		System.out.println("Item: " + snackSelection.getproductName() + " $" + currency.format(snackSelection.getPrice()) + " Money Remaining: $" + properDecimalBalance);
 
 		//log purchase
 		TransactionLogger.logPurchase(snackSelection, balance);

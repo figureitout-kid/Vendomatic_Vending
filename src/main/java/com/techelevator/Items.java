@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.text.DecimalFormat;
 public class Items {
     private String slotLocation;
     private String productName;
@@ -48,9 +49,7 @@ public class Items {
         return productName;
     }
 
-    public double getPrice() {
-        return price;
-    }
+    public double getPrice() { return price; }
 
     public ItemType getType() {
         return type;
@@ -61,6 +60,7 @@ public class Items {
     }
 
     public int getQuantitySold() {return quantitySold;}
+
 
     //methods
 
@@ -77,9 +77,10 @@ public class Items {
 
     //toString method to properly print Vending Machine Items from Menu Option 1
     public String toString() {
+        DecimalFormat currency = new DecimalFormat("#0.00");
         return "Slot: " + slotLocation +
                 ", Name: " + productName +
-                ", Price: $" + price +
+                ", Price: $" + currency.format(price) +
                 ", Type: " + type +
                 ", Quantity: " + quantity;
     }
