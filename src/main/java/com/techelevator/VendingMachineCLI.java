@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.text.DecimalFormat;
 
 
 public class VendingMachineCLI {
@@ -166,8 +167,6 @@ public class VendingMachineCLI {
 
 
 
-//methods left to implement and call in the purchase menu
-
 	private void feedMoney() {
 		boolean continueFeeding = true;
 
@@ -210,7 +209,7 @@ public class VendingMachineCLI {
 			System.out.println("Invalid slot location. Pleas try again.");
 			return;
 		}
-		//***may have discrepancy w/ Items vs String?????????????????????????????????????????????
+
 		//grab name of the item and save as snack variable, by hashmap itemlocator
 		Items snackSelection = itemLocator.get(slotLocation);
 
@@ -232,9 +231,12 @@ public class VendingMachineCLI {
 
 		//subtract amount of snack from balance
 		balance -= snackSelection.getPrice();
+		//testing this to address the missing 0 in the hundreds place
+		DecimalFormat balanceWithTwoDecimals = new DecimalFormat("#0.00");
+		String properDecimalBalance = balanceWithTwoDecimals.format(balance);
 
 		//print item name, cost, and remaining balance
-		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + balance);
+		System.out.println("Item: " + snackSelection.getproductName() + " $" + snackSelection.getPrice() + " Money Remaining: $" + properDecimalBalance);
 
 		//log purchase
 		TransactionLogger.logPurchase(snackSelection, balance);

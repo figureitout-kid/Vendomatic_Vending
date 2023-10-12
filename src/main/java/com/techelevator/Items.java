@@ -19,9 +19,6 @@ public class Items {
     }
 
 
-
-    // trying enum here, but this could potentially
-    // be an interface, method getMessage()
     public enum ItemType {
         CHIP("Crunch Crunch, Yum!"),
         CANDY("Munch Munch, Yum!"),
@@ -67,7 +64,6 @@ public class Items {
 
     //methods
 
-    //may need to change dispense to include/tie in item instead of using type, depending on vending machine code?
     public void dispense() {
         if (quantity > 0) {
             quantity--;
