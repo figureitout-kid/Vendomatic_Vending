@@ -11,6 +11,13 @@ public class TransactionLogger {
 
     private static final String LOG_FILE_PATH = "Log.txt";
 
+    //adding next two lines for the logger test, if anything changes for logger, check this and line 48
+//    private static String logFilePath = "TestLog.txt";
+//
+//    public static void setLogFilePath(String path) {
+//        logFilePath = path;
+//    }
+
     public static void logDeposit(double amount, double newBalance) {
         String logMessage = getFormattedLogMessage("FEED MONEY", amount, newBalance);
         logToFile(logMessage);
