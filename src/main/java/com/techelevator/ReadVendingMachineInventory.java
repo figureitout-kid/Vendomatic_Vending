@@ -15,7 +15,6 @@ public class ReadVendingMachineInventory {
     public static List<Items> readItemsFromCSV(String filePath) {
         List<Items> items = new ArrayList<>();
 
-
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -28,11 +27,29 @@ public class ReadVendingMachineInventory {
                     String type = parts[3].trim();
                     int quantity = 5; // Initialize the quantity to 5
 
-                    Items item = new Items(slotLocation, productName, price, Items.ItemType.valueOf(type.toUpperCase()), quantity);
+                    Items item;
+
+                    switch (type.toUpperCase()) {
+                        case "CHIP":
+                            item = new Chip(slotLocation, productName, price, quantity);
+                            break;
+                        case "CANDY":
+                            item = new Candy(slotLocation, productName, price, quantity);
+                            break;
+                        case "DRINK":
+                            item = new Drink(slotLocation, productName, price, quantity);
+                            break;
+                        case "GUM":
+                            item = new Gum(slotLocation, productName, price, quantity);
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Invalid item type: " + type);
+                    }
+
                     items.add(item);
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
         }
         return items;
