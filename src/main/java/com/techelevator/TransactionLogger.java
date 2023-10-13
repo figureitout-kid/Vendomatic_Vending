@@ -29,7 +29,8 @@ public class TransactionLogger {
     }
 
     public static void logGiveChange(double changeAmount, double newBalance) {
-        String logMessage;
+        String logMessage = getFormattedLogMessage("GIVE CHANGE", changeAmount, newBalance);
+        logToFile(logMessage);
     }
 
     private static String getFormattedLogMessage(String action, double amount, double newBalance) {
