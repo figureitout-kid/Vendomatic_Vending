@@ -1,16 +1,17 @@
-package com.techelevator.view;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import com.techelevator.Chip;
 import com.techelevator.Items;
 import com.techelevator.ReadVendingMachineInventory;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.util.List;
-
-import static org.junit.Assert.*;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 public class ReadVendingMachineInventoryTest {
 
@@ -18,35 +19,31 @@ public class ReadVendingMachineInventoryTest {
 
     @Before
     public void setUp() throws IOException {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(TEST_FILE_PATH))) {
-        writer.write("A1|Wonka Bar|1.50|CANDY\n");
-        writer.write("A2|Cola|1.25|DRINK\n");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(TEST_FILE_PATH))) {
+            writer.write("A1|Potato Crisps|3.05|Chip\n");
+            writer.write("A2|Doritos|2.50|Chip\n");
         }
     }
 
-
     @Test
     public void testReadItemsFromCSV() throws IOException {
-        //Act
+        // Act
         List<Items> items = ReadVendingMachineInventory.readItemsFromCSV(TEST_FILE_PATH);
 
-        //Assert
+        // Assert
         assertEquals(2, items.size());
 
-        Items item1 = items.get(0);
-        assertEquals("A1", item1.getSlotLocation());
-        assertEquals("Wonka Bar", item1.getproductName());
-        assertEquals(1.50, item1.getPrice(), 0.01);
-        assertEquals(Items.ItemType.CANDY, item1.getType());
-        assertEquals(5, item1.getQuantity());
+        Chip chipItem1 = (Chip) items.get(0);
+        assertEquals("A1", chipItem1.getSlotLocation());
+        assertEquals("Potato Crisps", chipItem1.getProductName());
+        assertEquals(3.05, chipItem1.getPrice(), 0.01);
+        assertEquals(5, chipItem1.getQuantity());
 
-        Items item2 = items.get(1);
-        assertEquals("A2", item2.getSlotLocation());
-        assertEquals("Cola", item2.getproductName());
-        assertEquals(1.25, item2.getPrice(), 0.01);
-        assertEquals(Items.ItemType.DRINK, item2.getType());
-        assertEquals(5, item2.getQuantity());
-
+        Chip chipItem2 = (Chip) items.get(1);
+        assertEquals("A2", chipItem2.getSlotLocation());
+        assertEquals("Doritos", chipItem2.getProductName());
+        assertEquals(2.50, chipItem2.getPrice(), 0.01);
+        assertEquals(5, chipItem2.getQuantity());
     }
 
     @After
@@ -56,5 +53,4 @@ public class ReadVendingMachineInventoryTest {
             testFile.delete();
         }
     }
-
 }

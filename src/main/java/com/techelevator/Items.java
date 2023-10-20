@@ -17,7 +17,9 @@ public abstract class Items {
         this.quantity = quantity;
     }
 
-
+    public String getProductName() {
+        return productName;
+    }
 
 
 

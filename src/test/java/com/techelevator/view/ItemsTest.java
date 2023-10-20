@@ -3,6 +3,7 @@ package com.techelevator.view;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.techelevator.Chip;
 import com.techelevator.Items;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +14,9 @@ public class ItemsTest {
 
     @Before
     public void setUp() {
-        // Create an item with an initial quantity of 5
-        item = new Items("A1", "Potato Crisps", 3.05, Items.ItemType.CHIP, 5);
+        // Create an item with an initial quantity of 5 and an item type of "Chip"
+        item = new Chip("A1", "Potato Crisps", 3.05, 5);
     }
-
 
     @Test
     public void quantityCanBeDecreasedFrom5() {
@@ -37,9 +37,10 @@ public class ItemsTest {
 
         assertTrue(item.isSoldOut());
     }
+
     @Test
-    public void canBeRestockedToMax(){
-        //dispense four items and restock to max quantity
+    public void canBeRestockedToMax() {
+        // dispense four items and restock to max quantity
         item.dispense();
         item.dispense();
         item.dispense();
