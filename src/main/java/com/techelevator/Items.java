@@ -9,7 +9,7 @@ public abstract class Items {
     private int quantitySold;
     private int MAX_QUANTITY = 5;
 
-    //setter, maybe change the parameters, or need to read from inventory?
+    //setter
     public Items(String slotLocation, String productName, double price, int quantity) {
         this.slotLocation = slotLocation;
         this.productName = productName;
@@ -17,32 +17,19 @@ public abstract class Items {
         this.quantity = quantity;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-
-
     //getters
     public String getSlotLocation() {
         return slotLocation;
     }
-
-    public String getproductName() {
+    public String getProductName() {
         return productName;
     }
-
     public double getPrice() { return price; }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public int getQuantitySold() {return quantitySold;}
+    public int getQuantity() { return quantity; }
+    public int getQuantitySold() { return quantitySold; }
 
 
     //methods
-
     public void dispense() {
         if (quantity > 0) {
             quantity--;
@@ -74,8 +61,3 @@ public abstract class Items {
     }
 }
 
-
-
-// somewhere we need to read the vending machine inventory, and
-// give information on items location/name/price/itemtype
-//do we need a hashmap of items linked to their location?

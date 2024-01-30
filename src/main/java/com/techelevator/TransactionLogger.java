@@ -42,7 +42,7 @@ public class TransactionLogger {
     private static String getFormattedLogMessage(Items item, double newBalance) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
         String timestamp = dateFormat.format(new Date());
-        return String.format("%s %s: $%.2f $%.2f", timestamp, item.getproductName(), item.getPrice(), newBalance);
+        return String.format("%s %s: $%.2f $%.2f", timestamp, item.getProductName(), item.getPrice(), newBalance);
     }
 
     private static void logToFile(String logMessage) {

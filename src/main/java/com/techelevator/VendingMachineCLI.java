@@ -68,7 +68,6 @@ public class VendingMachineCLI {
                     break;
                 case MAIN_MENU_OPTION_EXIT:
                     System.out.println("Thank you for using this vending machine. Have a nice day...");
-                    // do we need to add logic here to restock the entire vending machine?- we would need to iterate through all items?
                     System.exit(0);
                     break;
                 case MAIN_MENU_OPTION_SALES_REPORT:
@@ -119,7 +118,7 @@ public class VendingMachineCLI {
 
 		try (PrintWriter writer = new PrintWriter(fileName)) {
 			for (Items item : vendingMachineItems) {
-				writer.println(item.getproductName() + "|" + item.getQuantitySold());
+				writer.println(item.getProductName() + "|" + item.getQuantitySold());
 			}
 
 			writer.println();
@@ -201,12 +200,13 @@ public class VendingMachineCLI {
 	private void selectProduct() {
 		displayVendingMachineItems();
 		System.out.print("Enter the slot location of the item you'd like to purchase: ");
-		// save input for location-- possibly need to change var name?
+
+		// save input for location
 		String slotLocation = menu.getInput().toUpperCase().trim();
 
 		//ensure input is a legitimate slot location
 		if (!itemLocator.containsKey(slotLocation)) {
-			System.out.println("Invalid slot location. Pleas try again.");
+			System.out.println("Invalid slot location. Please try again.");
 			return;
 		}
 
@@ -237,7 +237,7 @@ public class VendingMachineCLI {
 		String properDecimalBalance = currency.format(balance);
 
 		//print item name, cost, and remaining balance
-		System.out.println("Item: " + snackSelection.getproductName() + " $" + currency.format(snackSelection.getPrice()) + " Money Remaining: $" + properDecimalBalance);
+		System.out.println("Item: " + snackSelection.getProductName() + " $" + currency.format(snackSelection.getPrice()) + " Money Remaining: $" + properDecimalBalance);
 
 		//log purchase
 		TransactionLogger.logPurchase(snackSelection, balance);
@@ -248,9 +248,7 @@ public class VendingMachineCLI {
 
 	//finish transaction option-- return change in least amount of change using quarters, dimes, nickels, print change amount
 	//return balance to zero, return to main menu
-
 	//convert dollar amount to actual change amount, then reduce balance by using modulo to find remainder
-	//braxton- if you want me to walk this out, it hurt my brain
 	private void finishTransaction(){
 		double originalBalance = balance;
 		int quarters = 0;
